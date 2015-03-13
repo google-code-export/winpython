@@ -1,0 +1,13 @@
+My first post related to WinPython on Spyder's blog is worth reading to understand a few things regarding the original motivation and some facts on building 64-bit Python packages on Windows -- it's entitled: "[Scientific Python distribution for Windows 64bit](http://spyder-ide.blogspot.fr/2012/08/scientific-python-distribution-for.html)".
+
+After creating the [Python(x,y)](http://www.pythonxy.com) distribution which is still a great success in the scientific Python ecosystem, I wanted to try another way of distributing Python for Windows through a portable distribution which would rely on official packages only (i.e. libraries built by their own maintainer) instead of having to rebuild every single package like it's done with Python(x,y).
+
+A portable distribution means that it's all in a single, self-consistent folder which is movable to any location without any installation procedure: in other words, copying is installing. To make it work, configuration scripts must be executed before the Python interpreter itself is started, setting up the right environment for its execution.
+
+As a consequence, _multiple versions of WinPython_ (with arbitrary versions or architectures of Python) _may be used on the same machine without any specific configuration_. In August 2012, when I decided to launch the project, this was the strongest motivation of all: being able to use as many Python distributions as I need on any machine, in a 5 minutes top (just the time to unzip a 200-300MB archive), thus allowing to test scripts with Python 2.7 or 3.3, 32 or 64bit.
+
+Ultimately, this will allow me to keep with me on a USB key my whole development framework: a working Python/Spyder environment, TortoiseHg and other development tools and all my projects. Note that it will also require a redirection of user settings environment variable %USERPROFILE%<sup>[1]</sup> and a new feature in Spyder ([being able to set the workspace directory location to a relative path](http://code.google.com/p/spyderlib/issues/detail?id=1133)<sup>[2]</sup>).
+
+<sup>[1]</sup> I'm still not sure about this. For example, when working on the same machine for a time being, this maybe annoying to loose settings everytime you switch from a distribution to another: in this situation, the single settings folder in user's home directory would probably be more comfortable.
+
+<sup>[2]</sup> Since [this changeset](http://code.google.com/p/winpython/source/detail?r=f953c21f2ce104131e549be9a66bf8dd26d726ca), this is handled by the executable launchers of Spyder in WinPython.
